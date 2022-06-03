@@ -17,7 +17,7 @@ import {
   getProductsUniqueCategories,
 } from "@utils/product";
 import { gql, useQuery } from "@apollo/client";
-import { useSearchkitVariables } from "@searchkit/client";
+import { useSearchkitVariables, useSearchkit } from "@searchkit/client";
 import { versionInfo } from "graphql";
 const querygql = gql`
   query resultSet(
@@ -252,28 +252,28 @@ const ShopFilters = (props) => {
   const removeGender = () => {
     delete router?.query?.gender;
     router.push({
-      pathname: "/",
+      pathname: "/shop/left-sidebar",
       query: router?.query,
     });
   };
   const removePtype = () => {
     delete router?.query?.productype;
     router.push({
-      pathname: "/",
+      pathname: "/shop/left-sidebar",
       query: router?.query,
     });
   };
   const removevendor = () => {
     delete router?.query?.vendor;
     router.push({
-      pathname: "/",
+      pathname: "/shop/left-sidebar",
       query: router?.query,
     });
   };
   const removedomain = () => {
     delete router?.query?.domain;
     router.push({
-      pathname: "/",
+      pathname: "/shop/left-sidebar",
       query: router?.query,
     });
   };
@@ -312,7 +312,7 @@ const ShopFilters = (props) => {
             <div className="tt-filter-detach-option">
               <div className="filters-mobile">
                 <div className="filters-row-select">
-                  <SortBy onSortHandler={onSortHandler} />
+                  <SortBy />
 
                   <ProductPerPage
                     productPerPage={productPerPage}

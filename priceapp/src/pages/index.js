@@ -5,6 +5,7 @@ import { withSearchkit, withSearchkitRouting } from "@searchkit/client";
 import { ProductsContext } from "@global/ProductsContext";
 import withApollo from "../hocs/withApollo";
 import PageShopLeftSidebar from "./shop/left-sidebar";
+import Index from "./home/twenty"
 import React, { Suspense, lazy } from "react";
 const Home = ({ blogs }) => {
   const { products } = useContext(ProductsContext);
@@ -13,9 +14,7 @@ const Home = ({ blogs }) => {
 
   return (
     <Fragment>
-      
-      <PageShopLeftSidebar />
-      
+      <Index/>
     </Fragment>
   );
 };

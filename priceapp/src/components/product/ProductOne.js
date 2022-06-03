@@ -43,9 +43,9 @@ const ProductOne = ({ product, page, showVariant, className }) => {
   const discountDuration = "2022-05-27";
   const productStock = 20;
   const cartProductQuantity = 10;
-  const { modalQuickViewHandler, slug, modalQuickView } = useProduct(
-    product?.fields
-  );
+  // const { modalQuickViewHandler, slug, modalQuickView } = useProduct(
+  //   product?.fields
+  // );
 
   // const {shoppingCart, addToCart} = useContext(CartContext);
   // const isInCart = getCartProduct(shoppingCart, product, productColor, productSize, productMaterial);
@@ -60,15 +60,15 @@ const ProductOne = ({ product, page, showVariant, className }) => {
           ) : (
             <ProductAction
               product={product}
-              modalQuickViewHandler={modalQuickViewHandler}
+              // modalQuickViewHandler={modalQuickViewHandler}
             />
           )}
 
           <Link href={"/"}>
             <a>
               <ProductThumb
-                thumbs={[product.fields.image]}
-                productName={product.fields.title}
+                thumbs={[product?.fields?.image]}
+                productName={product?.fields?.title}
               />
 
               <div className="tt-label-location">
@@ -99,7 +99,7 @@ const ProductOne = ({ product, page, showVariant, className }) => {
             <ul className="tt-add-info">
               <li>
                 <Link href="/">
-                  <a>{product.fields.vendor}</a>
+                  <a>{product?.fields?.vendor}</a>
                 </Link>
               </li>
             </ul>
@@ -108,13 +108,13 @@ const ProductOne = ({ product, page, showVariant, className }) => {
           </div>
 
           <h2 className="tt-title">
-            <Link href={"/"}>{product.fields.title}</Link>
+            <Link href={"/"}>{product?.fields?.title}</Link>
           </h2>
 
           <div className="tt-price mt-1">
             <Fragment>
               <span className="new-price">
-                {CURRENCY + product.fields.price}
+                {CURRENCY + product?.fields?.price}
               </span>
             </Fragment>
           </div>
@@ -198,20 +198,20 @@ const ProductOne = ({ product, page, showVariant, className }) => {
               ) : (
                 <ProductAction
                   product={product}
-                  modalQuickViewHandler={modalQuickViewHandler}
+                  // modalQuickViewHandler={modalQuickViewHandler}
                 />
               )}
             </div>
           </div>
         </div>
       </div>
-      {modalQuickView && (
+      {/* {modalQuickView && (
           <QuickView
             product={product.fields}
             modalShow={modalQuickView}
             modalOnHide={modalQuickViewHandler}
           />
-        )}
+        )} */}
         {/* {modalCartAdded && (
           <CartNotification
             product={isInCart}

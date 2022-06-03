@@ -1,19 +1,47 @@
 import PropType from "prop-types";
-
-const SortBy = ({onSortHandler}) => {
-    return (
-        <select defaultValue="default" onChange={(event => onSortHandler(event.target.value))}>
-            <option value="default">Default</option>
-            <option value="nameA2Z">Name (A-Z)</option>
-            <option value="nameZ2A">Name (Z-A)</option>
-            <option value="priceLow2High">Price (Low to High)</option>
-            <option value="priceHigh2Low">Price (High to Low)</option>
-        </select>
-    );
+import Link from "next/link";
+import { useRouter } from "next/router";
+const SortBy = () => {
+  const router = useRouter();
+  function handleChange(e) {
+    const price = e.target.value;
+    router.push({
+      pathname: "/shop/left-sidebar",
+      query: { ...router.query, price },
+    });
+  }
+  const removeprice = () => {
+    delete router?.query?.price;
+    router.push({
+      pathname: "/shop/left-sidebar",
+      query: router?.query,
+    });
+  };
+  return (
+    <>
+      <select name="lang" id="lang" onChange={handleChange}>
+        <option value="#"> </option>
+        <option value="price">Price-Desc </option>
+      </select>
+      {router?.query?.price ? (
+        <button
+          onClick={removeprice}
+          style={{
+            marginLeft: "20px",
+            fontSize: "10px",
+            border: "none",
+          }}
+        >
+          ❌
+        </button>
+      ) : null}
+    </>
+  );
 };
-
-SortBy.propTypes = {
-    onSortHandler: PropType.func.isRequired
-}
+// delete router.query.something;
+// router.push(router);
+// SortBy.propTypes = {
+//   onSortHandler: PropType.func.isRequired,
+// };
 
 export default SortBy;

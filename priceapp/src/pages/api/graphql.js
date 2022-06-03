@@ -40,6 +40,11 @@ const searchkitConfig = {
       label: "Date",
       field: { updatedAt: "desc" },
     },
+    {
+      id: "price",
+      label: "Price",
+      field: { price: "desc" },
+    },
   ],
   query: new MultiMatchQuery({
     fields: ["title"],

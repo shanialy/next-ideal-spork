@@ -1,7 +1,9 @@
 import PropTypes from "prop-types";
 import { Fragment, useEffect, useState } from "react";
+import { withSearchkit, withSearchkitRouting } from "@searchkit/client";
 import { Container, Col, Row } from "react-bootstrap";
 import { useSort, useFilter, useWindowSize } from "@hooks";
+import withApollo from "../../hocs/withApollo";
 import LoadMore from "@components/shop/elements/LoadMore";
 import ShopOptions from "@components/shop/elements/ShopOptions";
 import ShopFilters from "@components/shop/elements/ShopFilters";
@@ -162,7 +164,7 @@ const ShopGrid = ({
   });
   const api = useSearchkit();
   const router = useRouter();
-  const { vendor, gender, domain, productype } = router.query;
+  const { vendor, gender, domain, productype, price } = router.query;
   useEffect(() => {
     if (api.canResetSearch()) {
       api.setQuery("");
@@ -205,10 +207,13 @@ const ShopGrid = ({
         value: productype,
       });
     }
+    if (price) {
+      customState.sortBy = price;
+    }
 
     api.setSearchState(customState);
     api.search();
-  }, [vendor, gender, productype, domain]);
+  }, [vendor, gender, productype, domain, price]);
 
   return (
     <Fragment>
@@ -285,5 +290,5 @@ const ShopGrid = ({
 // ShopGrid.propTypes = {
 //   products: PropTypes.array.isRequired,
 // };
-
-export default ShopGrid;
+export default withApollo(withSearchkit(ShopGrid));
+// export default ShopGrid;
