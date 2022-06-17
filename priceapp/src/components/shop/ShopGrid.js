@@ -11,7 +11,6 @@ import ShopProducts from "@components/shop/elements/ShopProducts";
 import { gql, useQuery } from "@apollo/client";
 import { useSearchkitVariables, useSearchkit } from "@searchkit/client";
 import { useRouter } from "next/router";
-import queryString from "query-string";
 const gqlquery = gql`
   query resultSet(
     $query: String
@@ -198,7 +197,7 @@ const ShopGrid = ({
     if (domain) {
       customState.filters.push({
         identifier: "domain",
-        value: gender,
+        value: domain,
       });
     }
     if (productype) {

@@ -421,6 +421,8 @@ const CategoriesMenu = ({ className, initialVisibility }) => {
                 </a>
               </Link>
             </li>
+            {/* yahan se delete */}
+            
           </ul>
         </nav>
       </div>

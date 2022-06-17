@@ -6,7 +6,7 @@
     "content": "<p class='tp-caption1-wd-3'>30 skins, powerful features, great support, exclusive offer</p>",
     "btnText": "SHOP NOW!",
     "btnLink": "/shop",
-    "bgImage": "/assets/images/slides/01/slide-01.jpg"
+    "bgImage": "https://hips.hearstapps.com/rbk.h-cdn.co/assets/16/32/2048x1024/landscape-1470862175-picmonkey-collage.jpg?resize=1200:*"
   },
   {
     "id": 2,
@@ -15,6 +15,6 @@
     "content": "<p class='tp-caption1-wd-3 tt-white-color'>Optimized for speed, website that sells</p>",
     "btnText": "SHOP NOW!",
     "btnLink": "/shop",
-    "bgImage": "/assets/images/slides/01/slide-02.jpg"
+    "bgImage": "http://www.southernsavers.com/wp-content/uploads/2016/11/jacket-1.jpg"
   }
 ]

@@ -10,10 +10,50 @@ import {
   SearchkitResolver,
   GeoBoundingBoxFilter,
 } from "@searchkit/schema";
+class CustomFilter {
+  excludeOwnFilters = false;
 
+  constructor() {}
+
+  getIdentifier() {
+    return "CustomFilter";
+  }
+
+  getFilters(filters) {
+    console.log(filters);
+    console.log("#####################\n");
+    // console.log(filters);
+    var returnedObj = filters.map((filter) => {
+      return filter.value;
+    });
+
+    returnedObj = returnedObj.shift();
+    // console.log( returnedObj)
+
+    var returnedObjJson = JSON.parse(returnedObj);
+
+    console.log(returnedObjJson, "post parse");
+
+    var reactMetaData = { queryType: "getTopBrands" };
+    var q2 = { bool: {} };
+    return q2;
+  }
+
+  // powers the appliedFilters type for all filters added
+  getSelectedFilter(filterSet) {
+    return {
+      type: "ValueSelectedFilter",
+      id: `${this.getIdentifier()}_${filterSet.value}`,
+      identifier: this.getIdentifier(),
+      label: "Custom Filter",
+      value: filterSet.value,
+      display: "Custom",
+    };
+  }
+}
 const searchkitConfig = {
   host: process.env.ES_HOST || "http://43.251.253.107:2500",
-  index: "pricechoice_v2",
+  index: "pricechoice_v3",
   hits: {
     fields: [
       "gender",
@@ -26,8 +66,16 @@ const searchkitConfig = {
       "domain",
       "product_type",
       "updatedAt",
+      "discount",
+      "sku",
+      "rating",
+      "product_url",
     ],
   },
+  filters: [
+    // new MustNotContainDomainsFilter()
+    new CustomFilter(),
+  ],
   sortOptions: [
     {
       id: "relevance",
@@ -44,6 +92,11 @@ const searchkitConfig = {
       id: "price",
       label: "Price",
       field: { price: "desc" },
+    },
+    {
+      id: "discount",
+      label: "Discount",
+      field: { discount: "desc" },
     },
   ],
   query: new MultiMatchQuery({
@@ -122,6 +175,10 @@ const server = new ApolloServer({
         domain: String
         product_type: String
         updatedAt: String
+        sku: String
+        rating: String
+        product_url: String
+        discount: String
       }
     `,
     ...typeDefs,
