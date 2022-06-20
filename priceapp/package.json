@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@apollo/client": "^3.6.5",
+    "@elastic/elasticsearch": "^8.2.1",
     "@madzadev/image-slider": "^1.0.9",
     "@searchkit/client": "^3.0.0-canary.55",
     "@searchkit/schema": "^3.0.0-canary.55",

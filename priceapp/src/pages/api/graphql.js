@@ -203,8 +203,3 @@ export default async function handler(req, res) {
   })(req, res);
 }
 
-// const handler = server.createHandler({ path: "/api/graphql" });
-
-// export default cors()((req, res) =>
-//   req.method === "OPTIONS" ? res.end() : handler(req, res)
-// );

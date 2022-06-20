@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { Fragment, useContext, useEffect } from "react";
+import { Fragment, useContext, useEffect, useState } from "react";
 import { getProductsBySkin } from "@utils/product";
 import { FooterOne as Footer } from "@components/footer";
 import { ProductsContext } from "@global/ProductsContext";
@@ -102,6 +102,7 @@ const gqlquery = gql`
 `;
 const HomeTwenty = () => {
   const { products } = useContext(ProductsContext);
+  const [topdiscounted, setTopdiscounted] = useState([]);
   var api = useSearchkit();
   const productsFashion = getProductsBySkin(products, "fashion");
   const logo = "/assets/images/no-placeholder/logo.png";
@@ -113,9 +114,48 @@ const HomeTwenty = () => {
   } = useQuery(gqlquery, {
     variables: variables,
   });
-  if (data) {
-    console.log("Page of Twenty", data);
-  }
+  const apifunc = async () => {
+    const query = "aggregationOnproducttype";
+    const res = await fetch("/api/search", {
+      method: "POST",
+      body: JSON.stringify(query),
+      headers: { "Content-Type": "application/json" },
+    });
+    const result = await res.json();
+    console.log(result.searchResults);
+  };
+  const apifunc2 = async () => {
+    const query = "domainwiseProductcount";
+    const res = await fetch("/api/search", {
+      method: "POST",
+      body: JSON.stringify(query),
+      headers: { "Content-Type": "application/json" },
+    });
+    const result = await res.json();
+    console.log(result.searchResults);
+  };
+  const apifunc3 = async () => {
+    const query = "top4discounted";
+    const res = await fetch("/api/search", {
+      method: "POST",
+      body: JSON.stringify(query),
+      headers: { "Content-Type": "application/json" },
+    });
+    const result = await res.json();
+    // setTopdiscounted(result.searchResults);
+    console.log(result.searchResults);
+  };
+  const apifunc4 = async () => {
+    const query = "top4rating";
+    const res = await fetch("/api/search", {
+      method: "POST",
+      body: JSON.stringify(query),
+      headers: { "Content-Type": "application/json" },
+    });
+    const result = await res.json();
+    console.log(result.searchResults);
+  };
+
   // var obj = '{"criteria":"title","domain":["brandsroots.com"]}';
 
   // api.toggleFilter({ identifier: "CustomFilter", value: obj });
@@ -123,6 +163,10 @@ const HomeTwenty = () => {
 
   // api.search();
   useEffect(() => {
+    apifunc();
+    apifunc2();
+    apifunc3();
+    apifunc4();
     const customState = {
       query: "",
       sortBy: "discount",
@@ -134,18 +178,6 @@ const HomeTwenty = () => {
     };
     api.setSearchState(customState);
     api.search();
-
-    // const customState = {
-    //   queryType: "TopSales",
-    // };
-    // console.log(customState);
-    // api.toggleFilter({
-    //   identifier: "CustomFilter",
-    //   value: customState,
-    // });
-    // const json = JSON.stringify(customState);
-    // api.toggleFilter({ identifier: "CustomFilter", value: json });
-    // api.search();
   }, []);
 
   return (
