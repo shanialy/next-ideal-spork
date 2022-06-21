@@ -48,13 +48,13 @@ const Productx = ({ product, page, showVariant, className }) => {
           <Link href={"/"}>
             <a>
               <ProductThumb
-                thumbs={[product.fields.image]}
-                productName={product.fields.title}
+                thumbs={[product._source.image]}
+                productName={product._source.title}
               />
               <div className="tt-label-location">
-                {product.fields.discount && (
+                {product._source.discount && (
                   <span className={`tt-label-sale`}>
-                    Sale {parseInt(product.fields.discount)}%
+                    Sale {parseInt(product._source.discount)}%
                   </span>
                 )}
               </div>
@@ -65,23 +65,23 @@ const Productx = ({ product, page, showVariant, className }) => {
               <ul className="tt-add-info">
                 <li>
                   <Link href="/">
-                    <a>{product.fields.vendor}</a>
+                    <a>{product._source.vendor}</a>
                   </Link>
                 </li>
               </ul>
 
-              <ProductRatings ratings={product.fields.rating} />
+              <ProductRatings ratings={product._source.rating} />
             </div>
 
             <h2 className="tt-title">
-              <Link href={"/"}>{product.fields.title}</Link>
+              <Link href={"/"}>{product._source.title}</Link>
             </h2>
 
             <div className="tt-price mt-1">
               <Fragment>
-                <span className="new-price">{product.fields.price}</span>
+                <span className="new-price">{product._source.price}</span>
                 <span className="old-price">
-                  {product.fields.price_before_sale}
+                  {product._source.price_before_sale}
                 </span>
               </Fragment>
             </div>

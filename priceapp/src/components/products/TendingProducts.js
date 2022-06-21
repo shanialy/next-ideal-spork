@@ -25,8 +25,8 @@ const TendingProducts = ({ data, products, layout, containerFluid }) => {
 
         {layout === "grid" && (
           <Row className="tt-layout-product-item">
-            {data?.slice(0, 4).map((product) => (
-              <Col key={product.id} sm={6} md={4} lg={3}>
+            {data?.map((product) => (
+              <Col key={product._id} sm={6} md={4} lg={3}>
                 <Productx page={"shop"} product={product} showVariant={true} />
               </Col>
             ))}
@@ -38,8 +38,8 @@ const TendingProducts = ({ data, products, layout, containerFluid }) => {
             {...sliderOptions}
             className="tt-carousel-products row arrow-location-tab arrow-location-tab01 tt-alignment-img tt-layout-product-item"
           >
-            {data?.slice(0, 4).map((product) => (
-              <Col key={product.id}>
+            {data?.map((product) => (
+              <Col key={product._id}>
                 <Productx page={"shop"} product={product} showVariant={true} />
               </Col>
             ))}

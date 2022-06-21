@@ -6,14 +6,15 @@ import { HeaderOne as Header } from "@components/header";
 import { FooterOne as Footer } from "@components/footer";
 import { ProductsContext } from "@global/ProductsContext";
 import { HomePagesNavData as navContent } from "@data/navbar";
+import withApollo from "../../hocs/withApollo";
+import { withSearchkit, withSearchkitRouting } from "@searchkit/client";
 import { ContentWrapperOne as ContentWrapper } from "@components/wrapper";
-
 
 const PageShopLeftSidebar = () => {
   const { products } = useContext(ProductsContext);
 
   const logo = "/assets/images/no-placeholder/logo.png";
- 
+
   return (
     <Fragment>
       <Head>
@@ -50,4 +51,5 @@ const PageShopLeftSidebar = () => {
   );
 };
 
-export default PageShopLeftSidebar;
+// export default PageShopLeftSidebar;
+export default withApollo(withSearchkit(PageShopLeftSidebar));
