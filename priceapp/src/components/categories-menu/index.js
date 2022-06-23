@@ -58,6 +58,18 @@ const CategoriesMenu = ({ className, initialVisibility }) => {
                               <Link href="/shop/left-sidebar">
                                 <a>Dresses</a>
                               </Link>
+                              <ul className="tt-megamenu-submenu">
+                                <li>
+                                  <Link href="/shop/left-sidebar">
+                                    <a>Blouses &amp; Shirts</a>
+                                  </Link>
+                                </li>
+                                <li>
+                                  <Link href="/shop/left-sidebar">
+                                    <a>Dresse</a>
+                                  </Link>
+                                </li>
+                              </ul>
                             </li>
                             <li>
                               <Link href="/shop/left-sidebar">
@@ -422,7 +434,6 @@ const CategoriesMenu = ({ className, initialVisibility }) => {
               </Link>
             </li>
             {/* yahan se delete */}
-            
           </ul>
         </nav>
       </div>

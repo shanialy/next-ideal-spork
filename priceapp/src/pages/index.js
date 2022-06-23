@@ -6,7 +6,10 @@ import { ProductsContext } from "@global/ProductsContext";
 import { HeaderSeven as Header } from "@components/header";
 import { HomePagesNavData as navContent } from "@data/navbar";
 import { CategoriesTen as Categories } from "@components/categories";
-import { HeroBannerFive as HeroBanner } from "@components/hero-banners";
+import {
+  HeroBannerFive as HeroBanner,
+  HeroBannerTemp,
+} from "@components/hero-banners";
 import { ContentWrapperOne as ContentWrapper } from "@components/wrapper";
 import { TendingProducts as Tending } from "@components/products";
 import Card from "@components/cards/Card";
@@ -35,7 +38,8 @@ export default function Home({
       </Head>
       <Header logo={logo} navData={navContent} containerFluid={false} />
       <ContentWrapper>
-        <HeroBanner className="tt-offset-20" />
+        {/* <HeroBanner className="tt-offset-20" /> */}
+        <HeroBannerTemp className="tt-offset-20" />
         <Categories />
       </ContentWrapper>
       <ContentWrapper>
