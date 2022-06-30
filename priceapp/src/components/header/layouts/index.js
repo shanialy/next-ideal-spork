@@ -23,12 +23,12 @@ const HeaderLayout = ({className, hoverStyleClass, children, containerFluid, nav
                 logo={logo}
                 mobileNavbarHandler={mobileNavbarHandler}
             />
-            {/* <StickyHeader
+            <StickyHeader
                 navData={navData}
                 hoverStyleClass={hoverStyleClass}
                 containerFluid={containerFluid}
                 mobileNavbarHandler={mobileNavbarHandler}
-            /> */}
+            />
         </header>
     );
 };

@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import Logo from "@components/logo";
 import Navbar from "@components/navbar";
 import {Container} from "react-bootstrap";
-import CategoriesMenu from "@components/categories-menu";
+import CategoriesMenu from "@components/categories-menu/temp";
 import HeaderAction from "@components/header/action/HeaderAction";
 
 const DesktopHeaderThree = ({navbarAlignment, logo, navData}) => {
